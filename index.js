@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const cors = require('cors'); 
+
 const jwt = require('jsonwebtoken');
 
 const dotenv = require('dotenv');
@@ -18,9 +20,10 @@ function generateAccessToken(username) {
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Node authentication app listening at http://localhost:${port}`)
 })
 
 app.post('/api/register', (req, res) => {
